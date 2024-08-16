@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+<div>
+    <div id="successMessage" class="hidden gray mono">
+        <p>New item successfully created. <a class="red" href="" id="seeItHere">See it here</a></p>
+    </div>
+
+    <h2 class="form gray black mono">Welcome to the Title Adding Page!</h2>
+    <h7 class="form mono gray">Input the information about the book below. We'll take care of linking all novels with the same detective!</h7>
+    
+    <form class="form mono" id="addform" action="/add" method="POST">
+        <label class="form-entry mono" for="title">Title:</label>
+        <input class="form-entry mono" type="text" id="title" name="title" required><br>
+
+        <label class="form-entry mono" for="imgadr">Image Address:</label>
+        <input class="form-entry mono" type="text" id="imgadr" name="imgadr" required><br>
+
+        <label class="form-entry mono" for="plot">Plot:</label>
+        <input class="form-entry mono" type="text" id="plot" name="plot" required><br>
+
+        <label class="form-entry mono" for="year">Year Published:</label>
+        <input class="form-entry mono" type="number" id="year" name="year" required><br>
+
+        <label class="form-entry mono" for="detective">Detective:</label>
+        <input class="form-entry mono" type="text" id="detective" name="detective" required><br>
+
+        <button class="form-button form-entry" type="submit">Submit</button>
+    </form>
+
+</div>
+
+<script src="{{ url_for('static', filename='add.js') }}"></script>
+{% endblock %}

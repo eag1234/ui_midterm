@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="/Users/emilygul/hw6_eg3148/static/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+    <div class="row header-small">
+
+    <nav class="mono">
+        <a href="/" id="line">Agatha Christie Book Finder</a>
+        <a class="add" id="line" href="/add">Add Title</a>
+        <!-- <label for="searchForm">search form</label> -->
+        <form class="align-right" id="searchForm" action="/search" method="GET">
+            <input type="search" name="query" placeholder="Type Here..." id="searchInput" autocomplete="off">
+            <button id="searchButton">Search!</button> 
+        </form>       
+    </nav>
+
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename = 'search_results.js') }}"></script>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

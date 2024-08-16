@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content%}
+<h2 class="form-entry mono">Edit The Entry for <span class="red">{{ result['Title']}}</span></h2>
+<form id="editform" action="{{ url_for('update_edit', id=result['Id']) }}"class="form form-entry mono" method="POST" data-item-id="{{ result['Id'] }}">
+    <label class="form-entry mono" for="title">Title:</label>
+    <input class="form-entry mono" type="text" id="title" name="title" required value="{{ result['Title'] }}"><br>
+
+    <label class="form-entry" for="imgadr">Image Address:</label>
+    <input class="form-entry mono" type="text" id="imgadr" name="imgadr" required value="{{ result['Image'] }}"><br>
+
+    <label class="form-entry mono" for="plot">Plot:</label>
+    <input class="form-entry mono" type="text" id="plot" name="plot" required value="{{ result['Plot'] }}"><br>
+
+    <label class="form-entry mono" for="year">Year Published:</label>
+    <input class="form-entry mono" type="number" id="year" name="year" required value="{{ result['Year Published'] }}"><br>
+
+    <label class="form-entry mono" for="detective">Detective:</label>
+    <input class="form-entry mono" type="text" id="detective" name="detective" required value="{{ result['Detective'] }}"><br>
+
+    <button class="form-entry form-button mono" type="submit" id="submit" data-item-id="{{ result['Id'] }}">Submit</button>
+    <button class="form-entry form-button mono" type="reset" id="reset" data-item-id="{{ result['Id'] }}">Discard Changes</button>
+
+</form>
+
+<script src="{{ url_for('static', filename='view_data.js') }}"></script>
+{% endblock %}

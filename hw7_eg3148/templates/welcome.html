@@ -1,0 +1,44 @@
+<!-- insert stuff with the three most popular items, will get back to this -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="black">
+    <div class="center">Explore Agatha Christie's Most Popular Novels!</div>
+    <div class="popular-items welcome row" id="popularItemsContainer">
+        {% for item in popular_items %}
+            <div class="popular-item col-md-3" data-item-id="{{ item['Id'] }}">
+                <img src="{{ item['Image'] }}" alt="{{ item['Title'] }}" class="item-image">
+                <h3 class="welcome-title text-center">{{ item['Title'] }}</h3>
+            </div>
+        {% endfor %}
+    </div>  
+    <div>
+        <div class="row gray">
+            <div class="col-md-8 offset-md-2">
+                <div class="important border-bottom">About the Site</div>
+                <div class="">Welome to the Agatha Christie Book Finder site! If you're here, that means you are trying to find a new Agatha Christie novel to read. You're in luck! Click on one of her three most popular titles above, or explore the collection we've curated below. Alternatively, feel free to conduct your own search. You can search by title, year, or detective! </div>
+            </div>
+        </div>
+        <!-- <div class="row gray"> 
+            <div class="col-md-6 offset-md-2">
+                <div class="important border-bottom red">About the Author</div>
+                <div class="">Dame Agatha Mary Clarissa Christie (1890–1976) is celebrated as one of the most successful and prolific authors in the detective fiction genre. Her meticulous attention to detail, ability to keep readers guessing, ingenious plots, captivating twists, and iconic characters like Hercule Poirot and Miss Jane Marple solidified her as the "Queen of Crime." Awarded the Grand Master Award and the title of Dame Commander of the Order of the British Empire, Agatha Christie's legacy endures as a cornerstone in the world of mystery literature. She has sold over a billion copies of her works and a billion in translation, making her a global literary phenomenon. </div>
+            </div>
+            <div class="col-md-2">
+                <img class="col-img" alt="Image of Agatha Chrisie" src="https://m.media-amazon.com/images/M/MV5BMTU3OTYzMzY4NV5BMl5BanBnXkFtZTcwMDIxOTIyOA@@._V1_.jpg">
+            </div>
+        </div> -->
+    </div>
+    <div class="gray important row border-bottom margin-fix red">Explore the Full Collection:</div> 
+    <div class="popular-items scroll">
+        {% for item in data %}
+            <div class="popular-item" data-item-id="{{ item['Id'] }}">
+                <img src="{{ item['Image'] }}" alt="{{ item['Title'] }}" class="item-image">
+                <h3 class="item-title">{{ item['Title'] }}</h3>
+            </div>
+        {% endfor %}
+    </div> 
+</div>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'view_data.js') }}"></script>
+{% endblock %}

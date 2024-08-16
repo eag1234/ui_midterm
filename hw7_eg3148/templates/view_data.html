@@ -1,0 +1,34 @@
+3{% extends 'layout.html' %}
+
+{% block content %}
+<div class="results">
+    
+    <button class="edit align-right" id="button" data-item-id="{{ item['Id'] }}">Edit</button>
+    <h1 class="mono">{{ item['Title'] }}</h1>
+    <p class="data mono"><strong>Detective:</strong><span class="black important"> {{ item['Detective'] }}</span></p>
+    <p class="data mono"><strong>Year Published:</strong> <span class="black important"> {{ item['Year Published'] }}</span></p>
+    <div class="row">
+        <div class="col-md-1">
+            <img class="img" src="{{ item['Image'] }}" alt="{{ item['Title'] }}">
+        </div>
+        <div class="col-md-7 margin data">
+            <p><strong>Plot:</strong><span class="black"> {{ item['Plot'] }}</span></p>
+        </div>
+    </div>
+    <div>
+        <!-- <p><strong>Title:</strong><span class="important"> {{item['Title']}}</span></p> -->
+        
+        <p><strong>Other {{ item['Detective']}} Novels:</strong> 
+        {% for detective_id in item['Similar Detective'] %}
+            {% set detective = data[detective_id] %}
+            <a href="{{ url_for('view_item', item_id=detective['Id']) }}">{{ detective['Title'] }}</a>
+            {% if not loop.last %}, {% endif %}
+        {% endfor %}
+        </p>
+        
+    </div>
+    
+</div>
+
+<script src="{{ url_for('static', filename='view_data.js') }}"></script>
+{% endblock %}
